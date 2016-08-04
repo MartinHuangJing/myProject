@@ -1,0 +1,165 @@
+/* line 5, ../../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 3, ../../src/sass/login.scss */
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: 'Microsoft YaHei';
+}
+
+@keyframes bag {
+  0% {
+    background: #5fa1d5;
+  }
+  12% {
+    background: #cf39c4;
+  }
+  34% {
+    background: #9a39cf;
+  }
+  56% {
+    background: #5fd586;
+  }
+  78% {
+    background: #cf3939;
+  }
+  100% {
+    background: #5fa1d5;
+  }
+}
+/* line 16, ../../src/sass/login.scss */
+.container {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #5fa1d5;
+  animation: bag 18s infinite;
+  overflow: hidden;
+}
+
+/* line 25, ../../src/sass/login.scss */
+.login_from {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 380px;
+  height: 271px;
+  margin-top: -135px;
+  margin-left: -190px;
+  padding: 20px 40px;
+}
+/* line 34, ../../src/sass/login.scss */
+.login_from .form-group {
+  margin: 0;
+}
+/* line 37, ../../src/sass/login.scss */
+.login_from .btn-primary {
+  margin-top: 15px;
+  width: 300px;
+  height: 50px;
+  border-radius: 30px;
+  font-size: 16px;
+  background: #5fa1d5;
+  border: 1px solid #fff;
+  transition: all 0.2s;
+  animation: bag 18s infinite;
+}
+/* line 47, ../../src/sass/login.scss */
+.login_from .btn-primary:focus {
+  outline: none;
+}
+/* line 51, ../../src/sass/login.scss */
+.login_from input {
+  height: 50px;
+  width: 300px;
+  border-radius: 30px;
+  text-align: center;
+  font-size: 16px;
+  border: 1px solid #fff;
+}
+
+/* line 60, ../../src/sass/login.scss */
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+}
+
+/* line 67, ../../src/sass/login.scss */
+.bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  color: #fff;
+  font-size: 12px;
+}

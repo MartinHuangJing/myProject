@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>医保通</title>
+  <link rel="stylesheet" href="/static/frame/bootstrap/css/bootstrap.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/static/dist/css/index.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/static/dist/css/animate.css" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+  <div class="container-fluid animated rollIn"  id="app" :style="{paddingLeft:layoutConfig.left_width}">
+      <div class="main_left" :style="{width:layoutConfig.left_width}">
+        <span :class="'glyphicon glyphicon-menu-'+layoutConfig.btn_class" :style="{width:layoutConfig.btn_width}" id="moveBtn" @click="changeLayout"></span>
+        <h1 class="title"><img src="/static/dist/img/logo.png" width="50" alt="医保通">医保通</h1>
+        <%include index_menu.html%>
+        <div class="loginInfo">
+          <ul>
+            <li><img src="/static/dist/img/userimg.gif" alt="<%=username%>" title="<%=username%>"><%=username%>
+
+                <span class="loginout">
+                   <i class="glyphicon glyphicon-log-in" title="退出"></i>
+                 </span>
+            </li>
+          </ul>
+          <form id="login_out_form" name="login_out_form" action="/user/loginout" methed="post">
+            <input type="hidden" value="<%=username%>">
+          </form>
+        </div>
+      </div>
+      <div class="main_right">
+
+      </div>
+  </div>
+  <script src="/static/dist/js/common.js"></script>
+  <script src="/static/dist/js/index.js"></script>
+</body>
+</html>

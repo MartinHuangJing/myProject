@@ -1,0 +1,123 @@
+
+<link rel="stylesheet" href="/static/frame/swiper/dist/css/swiper.min.css">
+<link rel="stylesheet" href="/static/dist/css/account.css">
+<link rel="stylesheet" href="/static/dist/css/detail.css">
+<div class="account" v-cloak id="account">
+  <div class="toplink">
+    <h2><i class="glyphicon glyphicon-user" style="padding-right:10px;position:relative;top:2px;"></i>所有用户</h2>
+    <div class="search">
+      <div class="input-group" id="searchForm">
+        <span v-show="keyword!=''" class="glyphicon glyphicon-remove" id="close" @click="closeSearch"></span>
+        <input type="text" class="form-control" v-model="keyword" placeholder="请输入手机号搜索用户" id="keyword">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" @click="searchSub"><i class="glyphicon glyphicon-search"></i></button>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="account_list">
+    <table class="table table-bordered">
+      <tr class="active">
+        <td>用户名</td>
+        <td>实名</td>
+        <td>注册时间</td>
+        <td>最后登录时间</td>
+        <td>操作</td>
+      </tr>
+      <tr v-for="el in accountList">
+        <td>{{el.username}}</td>
+        <td v-if="el.is_realname==1" title="已审核">
+          <span style="color:green" class="glyphicon glyphicon-ok"></span>
+        </td>
+        <td v-if="el.is_realname==0" title="未审核">
+          <span style="color:red" class="glyphicon glyphicon-remove"></span>
+        </td>
+        <td v-if="el.is_realname==2" title="审核中">
+          <span style="color:yellow" class="glyphicon glyphicon-info-sign"></span>
+        </td>
+        <td>{{el.register_time}}</td>
+        <td>{{el.last_login_time}}</td>
+        <td v-if="el.is_realname==1">
+          <span @click="detailAction" :data-id="el.id" :data-username="el.username" style="color:blue;cursor:pointer"><i style="padding-right:8px;position:relative;top:2px" class="glyphicon glyphicon-wrench"></i>详情</span>
+        </td>
+        <td v-if="el.is_realname!=1">
+          <span style="color:#777;cursor:not-allowed"><i style="padding-right:8px;position:relative;top:2px" class="glyphicon glyphicon-eye-close"></i>未实名</span>
+        </td>
+      </tr>
+    </table>
+    <div class="navBar">
+      <nav>
+        <ul class="pagination">
+          <li class="Previous disabled" @click="prev">
+            <a href="javascript:" aria-label="Previous">
+              <span aria-hidden="true">上一页</span>
+            </a>
+          </li>
+          <li class="pageNum" v-for="el in pageList" @click="pageFn">
+            <a href="javascript:">{{el}}</a>
+          </li>
+          <li class="Next" @click="next">
+            <a href="javascript:" aria-label="Next">
+              <span aria-hidden="true">下一页</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="detail_ly" v-show="detailConfig.active"><div class="detail_ly_ly"></div></div>
+  <div class="detail_ly_ly"></div>
+  <div class="detail swiper-container" :style="{right:detailConfig.right,opacity:detailConfig.opacity}">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <h3>用户详情
+          <span @click="closeDetail" class="glyphicon glyphicon-remove"></span>
+        </h3>
+        <table>
+          <tr>
+            <td>登陆用户:</td>
+            <td>{{userDetail.username}}</td>
+          </tr>
+          <tr>
+            <td>社保卡号:</td>
+            <td>{{userDetail.medicare_no}}</td>
+          </tr>
+          <tr>
+            <td>真实姓名:</td>
+            <td>{{userDetail.realname}}</td>
+          </tr>
+          <tr>
+            <td>生份证号:</td>
+            <td>{{userDetail.id_card}}</td>
+          </tr>
+          <tr>
+            <td>创建时间:</td>
+            <td>{{userDetail.create_time}}</td>
+          </tr>
+          <tr>
+            <td>修改时间:</td>
+            <td>{{userDetail.update_time}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><span>身份证正面照</span>
+              <img width="100%" src="/static/dist/img/11.png" alt="">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><span>身份证背面照</span>
+              <img width="100%" src="/static/dist/img/11.png" alt="">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><span>手持社保卡照</span>
+              <img width="100%" src="/static/dist/img/11.png" alt="">
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="swiper-scrollbar"></div>
+  </div>
+</div>
+<!--<script src="/static/dist/js/account.js"></script>-->

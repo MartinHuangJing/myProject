@@ -1,0 +1,45 @@
+.account {
+  .toplink {
+    padding: 0 22px;
+    height: 80px;
+    &:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+    h2 {
+      font-size: 24px;
+      float: left;
+      line-height: 80px;
+    }
+    .search {
+      padding-top: 22px;
+      float: right;
+      width: 250px;
+    }
+  }
+  .account_list {
+    table {
+      td {
+        text-align: center;
+        font-size: 14px;
+      }
+    }
+    .navBar {
+      float: right;
+      padding-right: 20px;
+      font-size: 14px;
+    }
+  }
+}
+#searchForm {
+  position: relative;
+  #close {
+    position: absolute;
+    top: 10px;
+    right: 42px;
+    z-index: 999;
+    color: rgb(108, 108, 108);
+    cursor: pointer;
+  }
+}

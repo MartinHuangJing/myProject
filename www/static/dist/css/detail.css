@@ -1,0 +1,80 @@
+/* line 1, ../../src/sass/detail.scss */
+.detail {
+  position: absolute;
+  top: 0;
+  right: -500px;
+  transition: all 0.3s;
+  background: #fff;
+  z-index: 9999;
+  width: 500px;
+  height: 100%;
+  overflow: hidden;
+  padding: 20px;
+}
+/* line 12, ../../src/sass/detail.scss */
+.detail h3 {
+  padding: 10px 0 20px;
+  font-size: 18px;
+  position: relative;
+  border-bottom: 1px solid #ddd;
+}
+/* line 17, ../../src/sass/detail.scss */
+.detail h3 span {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  color: #bfbfbf;
+  transition: all 1s;
+  cursor: pointer;
+  transform: rotate(0deg);
+}
+/* line 25, ../../src/sass/detail.scss */
+.detail h3 span:hover {
+  color: #666666;
+  transform: rotate(360deg);
+}
+/* line 31, ../../src/sass/detail.scss */
+.detail table {
+  width: 100%;
+}
+/* line 33, ../../src/sass/detail.scss */
+.detail table td {
+  font-size: 14px;
+  padding: 12px 0 12px 5px;
+  vertical-align: middle;
+}
+/* line 37, ../../src/sass/detail.scss */
+.detail table td:first-child {
+  width: 70px;
+}
+/* line 40, ../../src/sass/detail.scss */
+.detail table td:nth-child(2) {
+  text-align: left;
+}
+/* line 43, ../../src/sass/detail.scss */
+.detail table td img {
+  vertical-align: top;
+}
+/* line 46, ../../src/sass/detail.scss */
+.detail table td span {
+  display: block;
+  padding-bottom: 10px;
+  font-size: 16px;
+  color: #12289d;
+}
+
+/* line 55, ../../src/sass/detail.scss */
+.detail_ly {
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
+}
+
+/* line 64, ../../src/sass/detail.scss */
+.swiper-slide {
+  height: auto;
+}

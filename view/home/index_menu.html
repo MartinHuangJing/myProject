@@ -1,0 +1,6 @@
+<ul class="list_group">
+  <%result.forEach(function(item,index){%>
+    <li class="<%=item.class_name%>" data-url="<%= item.href %>" data-file="<%= item.file_name %>" @click="changepage">
+      <i class="glyphicon glyphicon-<%= item.icon%>" title="<%=item.title%>"></i><%=item.name%></li>
+  <%})%>
+</ul>

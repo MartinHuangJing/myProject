@@ -1,0 +1,116 @@
+<link rel="stylesheet" href="/static/frame/swiper/dist/css/swiper.min.css">
+<link rel="stylesheet" href="/static/dist/css/setting.css">
+<link rel="stylesheet" href="/static/dist/css/detail.css">
+<div class="setting" id="setting">
+  <div class="toplink">
+    <h2><i class="glyphicon glyphicon-cog" style="padding-right:10px;position:relative;top:2px;"></i>系统设置</h2>
+    <div class="navLayout">
+    <ul class="nav nav-pills">
+      <li role="presentation" id="userAdmin" class="active"><a href="javascript:">管理员列表</a></li>
+      <li role="presentation"><a href="javascript:">添加成员</a></li>
+      <li role="presentation"><a href="javascript:">添加页面</a></li>
+    </ul>
+  </div>
+  </div>
+  
+  <div class="settinglist">
+    <div id="userAdminList">
+      <table class="table">
+        <tr class="titleKey">
+          <td>公司</td>
+          <td>部门</td>
+          <td>登录名</td>
+          <td>姓名</td>
+          <td>电话</td>
+          <td>手机</td>
+          <td>操作</td>
+        </tr>
+        <tr v-for="el in settingList">
+          <td>{{el.company}}</td>
+          <td>{{el.office}}</td>
+          <td>{{el.login_name}}</td>
+          <td>{{el.name}}</td>
+          <td>{{el.phone}}</td>
+          <td>{{el.mobile}}</td>
+          <td>
+            <span @click="detailAction" :data-id="el.id" :data-role="el.role_id" style="color:blue;cursor:pointer"></i>操作</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="detail_ly" v-show="detailConfig.active"></div>
+  <div class="detail swiper-container" :style="{right:detailConfig.right,opacity:detailConfig.opacity}">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <h3>管理员信息
+          <span @click="closeDetail" class="glyphicon glyphicon-remove"></span>
+        </h3>
+        <table>
+          <tr>
+            <td>登陆账号:</td>
+            <td><input type="text" v-model="userInfo.login_name"></td>
+          </tr>
+          <tr>
+            <td>公司名称:</td>
+            <td><input type="text" v-model="userInfo.company"></td>
+          </tr>
+          <tr>
+            <td>所在部门:</td>
+            <td><input type="text" v-model="userInfo.office"></td>
+          </tr>
+          <tr>
+            <td>账号身份:</td>
+            <td><input type="text" v-model="userInfo.name"></td>
+          </tr>
+          
+          <tr>
+            <td>手机:</td>
+            <td><input type="text" v-model="userInfo.mobile"></td>
+          </tr>
+          <tr>
+            <td>电话:</td>
+            <td><input type="text" v-model="userInfo.phone"></td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td><input type="text" v-model="userInfo.email"></td>
+          </tr>
+          <tr>
+            <td class="thisAuthTd">当前权限:</td>
+            <td>
+              <span  class="thisAuth" v-for="el in thisAuth" >{{el.name}} <i @click.stop="removeAuthFn" :data-index="$index" :data-role_id="el.role_id" :data-menu_id="el.menu_id" class="glyphicon glyphicon-remove"></i></span>
+              <div class="addAuth" href="javascript:">
+                <span @click="addAuthFn" class="clickAdd">添加权限 <i class="glyphicon glyphicon-plus"></i></span>
+                <ul class="allAuth">
+                  <li @click="addThisAuth" v-for="el in allowAuth" :data-index="$index" :data-role_id="el.role_id" :data-menu_id="el.menu_id">{{el.name}}</li>
+                  <li v-show="allowAuth.length == 0">没有可用的选项</li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>创建时间:</td>
+            <td>{{userInfo.create_date}}</td>
+          </tr>
+          <tr>
+            <td>修改时间:</td>
+            <td>{{userInfo.update_date}}</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <button @click="savaAuth" type="button" style="width:100%" class="btn btn-success saveBtn">保存</button>
+            </td>
+         </tr>
+         <tr>
+            <td colspan="2">
+              <button type="button" style="width:100%" class="btn btn-danger deleteUesr">删除用户</button>
+            </td>
+         </tr>
+        </table>
+      </div>
+    </div>
+    <div class="swiper-scrollbar"></div>
+  </div>
+</div>
+<!--<script src="/static/dist/js/setting.js"></script>-->

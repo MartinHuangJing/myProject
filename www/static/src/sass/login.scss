@@ -1,0 +1,77 @@
+@import "compass/reset";
+@import "compass/css3";
+body,html{
+  width: 100%;
+  height:100%;
+  font-family: 'Microsoft YaHei';
+}
+@keyframes bag{
+  0%{background: #5fa1d5}
+  12%{background: #cf39c4}
+  34%{background: #9a39cf}
+  56%{background: #5fd586}
+  78%{background: #cf3939}
+  100%{background: #5fa1d5}
+}
+.container{
+  padding:0;
+  width: 100%;
+  height:100%;
+  position: relative;
+  background: #5fa1d5;
+  animation: bag 18s infinite;
+  overflow: hidden;
+}
+.login_from{
+  position: absolute;
+  left:50%;
+  top:50%;
+  width: 380px;
+  height:271px;
+  margin-top:-135px;
+  margin-left:-190px;
+  padding:20px 40px;
+  .form-group{
+   margin:0; 
+  }
+  .btn-primary{
+    margin-top:15px;
+    width: 300px;
+    height:50px;
+    border-radius: 30px;
+    font-size: 16px;
+    background: #5fa1d5;
+    border:1px solid #fff;
+    transition:all 0.2s;
+    animation: bag 18s infinite;
+    &:focus{
+      outline: none;
+    }
+  }
+  input{
+    height:50px;
+    width: 300px;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 16px;
+    border:1px solid #fff;
+  }
+}
+h2{
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color:white;
+  margin-bottom: 10px;
+}
+.bottom{
+  position: absolute;
+  bottom: 0;
+  left:0;
+  width: 100%;
+  text-align: center;
+  height:50px;
+  line-height: 50px;
+  color:#fff;
+  font-size: 12px;
+}

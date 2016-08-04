@@ -1,0 +1,151 @@
+
+<link rel="stylesheet" href="/static/frame/swiper/dist/css/swiper.min.css">
+<link rel="stylesheet" href="/static/dist/css/auth.css">
+<link rel="stylesheet" href="/static/dist/css/detail.css">
+<div class="auth" v-cloak id="auth">
+  <div class="toplink">
+    <h2><i class="glyphicon glyphicon-eye-open" style="padding-right:10px;position:relative;top:2px;"></i>实名认证</h2>
+    <div class="search">
+      
+      <div class="input-group" id="searchForm">
+        <div class="input-group-btn">
+          <button type="button" style="border-right:none" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="searchkey">手机号码</span>&nbsp;<span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li data-info="username"><a href="javascript:">手机号码</a></li>
+            <li data-info="id_card"><a href="javascript:">身份证号</a></li>
+            <li data-info="realname"><a href="javascript:">真实姓名</a></li>
+            <li data-info="medicare_no"><a href="javascript:">社保卡号</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <span v-show="keyword!=''" class="glyphicon glyphicon-remove" id="close" @click="closeSearch"></span>
+        <input type="text" class="form-control" v-model="keyword" placeholder="请输入关键字" id="keyword">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" @click="searchSub"><i class="glyphicon glyphicon-search"></i></button>
+        </span>
+      </div><!-- /input-group -->
+    </div>
+  </div>
+
+  <div class="auth_list">
+    <table class="table table-bordered">
+      <tr class="active">
+        <td>用户名</td>
+        <td>真实姓名</td>
+        <td>实名状态</td>
+        <td>身份证号</td>
+        <td>社保卡号</td>
+        <td>修改日期</td>
+        <td>操作</td>
+      </tr>
+      <tr v-for="el in authList">
+        <td>{{el.username}}</td>
+        <td>{{el.realname}}</td>
+        <td v-if="el.is_realname==1" title="已审核">
+          <span style="color:green" class="glyphicon glyphicon-ok"></span>
+        </td>
+        <td v-if="el.is_realname==0" title="未审核">
+          <span style="color:red" class="glyphicon glyphicon-remove"></span>
+        </td>
+        <td v-if="el.is_realname==2" title="审核中">
+          <span style="color:yellow" class="glyphicon glyphicon-info-sign"></span>
+        </td>
+        <td>{{el.id_card}}</td>
+        <td>{{el.medicare_no}}</td>
+        <td>{{el.update_time}}</td>
+        <td>
+          <span @click="detailAction" :data-id="el.id" :data-username="el.username" style="color:blue;cursor:pointer"><i style="padding-right:8px;position:relative;top:2px" class="glyphicon glyphicon-wrench"></i>操作</span>
+        </td>
+        
+      </tr>
+    </table>
+    <div class="navBar">
+      <nav>
+        <ul class="pagination">
+          <li class="Previous disabled" @click="prev">
+            <a href="javascript:" aria-label="Previous">
+              <span aria-hidden="true">上一页</span>
+            </a>
+          </li>
+          <li class="pageNum" v-for="el in pageList" @click="pageFn">
+            <a href="javascript:">{{el}}</a>
+          </li>
+          <li class="Next" @click="next">
+            <a href="javascript:" aria-label="Next">
+              <span aria-hidden="true">下一页</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="detail_ly" v-show="detailConfig.active"></div>
+  <div class="detail swiper-container" :style="{right:detailConfig.right,opacity:detailConfig.opacity}">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <h3>用户详情
+          <span @click="closeDetail" class="glyphicon glyphicon-remove"></span>
+        </h3>
+        <table>
+          <tr>
+            <td>登陆用户:</td>
+            <td>{{userDetail.username}}</td>
+          </tr>
+          <tr>
+            <td>社保卡号:</td>
+            <td>{{userDetail.medicare_no}}</td>
+          </tr>
+          <tr>
+            <td>真实姓名:</td>
+            <td>{{userDetail.realname}}</td>
+          </tr>
+          <tr>
+            <td>生份证号:</td>
+            <td>{{userDetail.id_card}}</td>
+          </tr>
+          <tr>
+            <td>创建时间:</td>
+            <td>{{userDetail.create_time}}</td>
+          </tr>
+          <tr>
+            <td>修改时间:</td>
+            <td>{{userDetail.update_time}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><span>身份证正面照</span>
+              <img width="100%" src="/static/dist/img/11.png" alt="">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><span>身份证背面照</span>
+              <img width="100%" src="/static/dist/img/11.png" alt="">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><span>手持社保卡照</span>
+              <img width="100%" src="/static/dist/img/11.png" alt="">
+            </td>
+          </tr>
+          <tr>           
+            <td  colspan="2" v-if="userDetail.is_realname==1">
+              <button type="button" style="width:100%" class="btn btn-success" disabled="disabled">已实名</button>
+            </td>
+            <td  colspan="2" v-if="userDetail.is_realname==0">
+              <button type="button" style="width:100%" class="btn btn-warning" disabled="disabled">未实名</button>
+            </td>
+            <td  colspan="2" v-if="userDetail.is_realname==2">
+              <button type="button" style="width:100%" class="btn btn-primary">审核通过</button>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <button type="button" style="width:100%" class="btn btn-danger deleteUesr">删除用户</button>
+            </td>
+         </tr>
+        </table>
+      </div>
+    </div>
+    <div class="swiper-scrollbar"></div>
+  </div>
+</div>
+
+<!--<script src="/static/dist/js/auth.js"></script>-->

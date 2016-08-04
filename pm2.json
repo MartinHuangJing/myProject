@@ -1,0 +1,16 @@
+{
+  "apps": [{
+    "name": "c:UserswondersDesktopc:UserswondersDesktopmyProject",
+    "script": "www/production.js",
+    "cwd": "c:\Users\wonders\Desktop/c:\Users\wonders\Desktop\myProject",
+    "exec_mode": "cluster",
+    "instances": 0,
+    "max_memory_restart": "1G",
+    "autorestart": true,
+    "node_args": [],
+    "args": [],
+    "env": {
+      
+    }
+  }]
+}
